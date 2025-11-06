@@ -8,7 +8,7 @@ http-server.http.port=8080
 discovery.uri=http://localhost:8080
 EOF
 
-echo "${TRINO_JVM_ARGS:--server -Xmx16G -XX:InitialRAMPercentage=80 -XX:MaxRAMPercentage=80 -XX:G1HeapRegionSize=32M -XX:+ExplicitGCInvokesConcurrent -XX:+ExitOnOutOfMemoryError -XX:+HeapDumpOnOutOfMemoryError -XX:-OmitStackTraceInFastThrow -XX:ReservedCodeCacheSize=512M -XX:PerMethodRecompilationCutoff=10000 -XX:PerBytecodeRecompilationCutoff=10000 -Djdk.attach.allowAttachSelf=true -Djdk.nio.maxCachedBufferSize=2000000 -Dfile.encoding=UTF-8 -XX:+EnableDynamicAgentLoading}" | tr ' ' '\n' > /etc/trino/jvm.config
+echo "${TRINO_JVM_ARGS:--server -Xmx8G -XX:InitialRAMPercentage=80 -XX:MaxRAMPercentage=80 -XX:G1HeapRegionSize=32M -XX:+ExplicitGCInvokesConcurrent -XX:+ExitOnOutOfMemoryError -XX:+HeapDumpOnOutOfMemoryError -XX:-OmitStackTraceInFastThrow -XX:ReservedCodeCacheSize=512M -XX:PerMethodRecompilationCutoff=10000 -XX:PerBytecodeRecompilationCutoff=10000 -Djdk.attach.allowAttachSelf=true -Djdk.nio.maxCachedBufferSize=2000000 -Dfile.encoding=UTF-8 -XX:+EnableDynamicAgentLoading}" | tr ' ' '\n' > /etc/trino/jvm.config
 
 echo "--- Discovering and configuring catalogs from explicit environment variables ---"
 for i in {1..20}; do
