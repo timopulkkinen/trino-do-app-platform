@@ -14,6 +14,8 @@ echo "--- Discovering and configuring catalogs from explicit environment variabl
 for i in {1..20}; do
     url_var="DB${i}_URL"
     catalog_name_var="DB${i}_CATALOG_NAME"
+    user_var="DB${i}_USER"
+    password_var="DB${i}_PASSWORD"
 
     if [ -n "${!url_var}" ] && [ -n "${!catalog_name_var}" ]; then
         db_url="${!url_var}"
@@ -26,6 +28,8 @@ for i in {1..20}; do
         cat > "/etc/trino/catalog/${final_catalog_name}.properties" <<EOF
 connector.name=${connector_name}
 connection-url=${db_url}
+connection-user=${!user_var}
+connection-password=${!password_var}
 EOF
     fi
 done
