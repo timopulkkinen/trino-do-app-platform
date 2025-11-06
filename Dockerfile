@@ -1,4 +1,5 @@
 FROM trinodb/trino:latest
-COPY entrypoint-single.sh /etc/trino/entrypoint.sh
-RUN chmod +x /etc/trino/entrypoint.sh
-ENTRYPOINT ["/etc/trino/entrypoint.sh"]
+USER root
+COPY entrypoint-single.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
