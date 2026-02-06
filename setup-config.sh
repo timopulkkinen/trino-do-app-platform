@@ -13,6 +13,7 @@ cat > "${CONFIG_DIR}/config.properties" <<EOF
 coordinator=true
 node-scheduler.include-coordinator=true
 http-server.http.port=8080
+http-server.process-forwarded=true
 discovery.uri=http://localhost:8080
 EOF
 
